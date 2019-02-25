@@ -1,0 +1,16 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:all", "tslint-config-prettier"],
+    "rules": {
+        "typedef": [true, "call-signature", "arrow-call-signature", "parameter"],
+        "arrow-return-shorthand": true,
+        "no-magic-numbers": false,
+        "interface-name": [true, "never-prefix"],
+        "completed-docs": false,
+        "prefer-function-over-method": false,
+        "strict-type-predicates": false,
+        "no-implicit-dependencies": [true, "optional"],
+        "newline-per-chained-call": false,
+        "file-name-casing": false
+    }
+}
