@@ -1,6 +1,6 @@
 {
     "defaultSeverity": "error",
-    "extends": ["tslint:all", "tslint-config-prettier"],
+    "extends": ["tslint:recommended", "tslint-config-prettier"],
     "rules": {
         "typedef": [true, "call-signature", "arrow-call-signature", "parameter"],
         "arrow-return-shorthand": true,
