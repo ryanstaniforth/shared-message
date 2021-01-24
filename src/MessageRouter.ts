@@ -3,9 +3,10 @@ import { MessageHandler } from './MessageHandler';
 import { isNamedMessage } from './NamedMessage';
 
 export class MessageRouter<Context> {
-    private registeredHandlers: Array<
-        [AbstractMessageBuilder<unknown>, MessageHandler<unknown, unknown>]
-    > = [];
+    private registeredHandlers: [
+        AbstractMessageBuilder<unknown>,
+        MessageHandler<unknown, unknown>,
+    ][] = [];
 
     public handleMesage = (message: unknown, context: Context): void => {
         if (!isNamedMessage(message)) {
@@ -13,12 +14,12 @@ export class MessageRouter<Context> {
         }
 
         const filteredNamedHandlers = this.registeredHandlers.filter(
-            ([builder, _]) => builder.getMessageName() === message._name,
+            ([builder, _]): boolean => builder.getMessageName() === message._name,
         );
 
         const unnammedMessage = { ...message, _name: undefined };
 
-        filteredNamedHandlers.forEach(([builder, handler]) => {
+        filteredNamedHandlers.forEach(([builder, handler]): void => {
             if (!builder.isMessage(unnammedMessage)) {
                 return;
             }
@@ -32,7 +33,7 @@ export class MessageRouter<Context> {
         handler: MessageHandler<Message, Context>,
     ): void => {
         this.registeredHandlers = this.registeredHandlers.filter(
-            (registeredHandler) =>
+            (registeredHandler): boolean =>
                 registeredHandler[0].getMessageName() !== builder.getMessageName() ||
                 registeredHandler[1] !== handler,
         );

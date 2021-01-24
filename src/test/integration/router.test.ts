@@ -56,8 +56,8 @@ class BMessageBuilder extends AbstractMessageBuilder<BMessage> {
     };
 }
 
-describe('router', () => {
-    test('routes messages to correct handler', () => {
+describe('router', (): void => {
+    test('routes messages to correct handler', (): void => {
         const router = new MessageRouter<undefined>();
         const aMessageBuilder = new AMessageBuilder();
         const bMessageBuilder = new BMessageBuilder();
@@ -101,7 +101,7 @@ describe('router', () => {
         );
     });
 
-    test('handlers can be unbound', () => {
+    test('handlers can be unbound', (): void => {
         const router = new MessageRouter<undefined>();
         const aMessageBuilder = new AMessageBuilder();
 
@@ -124,7 +124,7 @@ describe('router', () => {
         expect(mock).toBeCalledTimes(2);
     });
 
-    test('handler is not called if incorrect message data is given', () => {
+    test('handler is not called if incorrect message data is given', (): void => {
         const router = new MessageRouter<undefined>();
         const aMessageBuilder = new AMessageBuilder();
 
@@ -163,7 +163,7 @@ describe('router', () => {
         expect(mock).toBeCalledTimes(1);
     });
 
-    test('context is sent correctly', () => {
+    test('context is sent correctly', (): void => {
         interface Context {
             id: string;
         }

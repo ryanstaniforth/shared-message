@@ -1,7 +1,7 @@
 import { isNamedMessage, NamedMessage } from '../../NamedMessage';
 
-describe('NamedMessage', () => {
-    test('isNamedMessage should be true', () => {
+describe('NamedMessage', (): void => {
+    test('isNamedMessage should be true', (): void => {
         const message1: NamedMessage = {
             _name: 'test',
         };
@@ -9,7 +9,7 @@ describe('NamedMessage', () => {
         expect(isNamedMessage(message1)).toBe(true);
     });
 
-    test('isNamedMessage should be false', () => {
+    test('isNamedMessage should be false', (): void => {
         const message1 = {};
 
         const message2 = {
